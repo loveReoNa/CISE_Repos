@@ -1,0 +1,31 @@
+nameCI action
+on:
+  push:
+    branches: [nain]
+  pull request:
+    branches: [main]
+jobs :
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version:[12.x]
+        
+    steps:
+      - name: Checkout repository
+      users: actions/checkout@v2
+      
+      - name: set up Node.js ${{ matrix.node-version }}
+        users: actions/setup-nodeg@v1
+        with:
+          node-version: ${{ matrix.node.version }}
+          
+      -name: Install dependencies
+      run: npm insta11
+      
+      -name; Run the tests
+      run: npm test
+      
+      -name: Build
+      run: npm run build
